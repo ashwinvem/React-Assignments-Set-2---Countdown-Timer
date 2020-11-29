@@ -2,23 +2,23 @@ import React, { Component, useState, useEffect } from "react";
 import "../styles/App.css";
 
 const App = () => {
-  const [remainingTime, setRemainingTime] = useState();
+  const [remTime, setRemTime] = useState();
 
   const handelKeyDown = (event) => {
     const value = event.target.value;
     console.log(value);
     if (event.keyCode === 13) {
       if (!isNaN(value) && parseInt(value)>=0) {
-        setRemainingTime(value);
-      } else setRemainingTime(0);
+        setRemTime(value);
+      } else setRemTime(0);
     }
   };
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (remainingTime && remainingTime > 0) {
-        const reduceTime = remainingTime - 1;
-        setRemainingTime(reduceTime);
+      if (remTime && remTime > 0) {
+        const reduceTime = remTime - 1;
+        setRemTime(reduceTime);
       }
     }, 1000);
 
@@ -39,7 +39,7 @@ const App = () => {
           sec.
         </div>
       </div>
-      <div id="current-time">{remainingTime}</div>
+      <div id="current-time">{remTime}</div>
     </div>
   );
 };
